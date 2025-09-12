@@ -1,0 +1,5 @@
+.idea
+database/*
+!database/.gitkeep
+training_images/*
+!training_images/.gitkeep

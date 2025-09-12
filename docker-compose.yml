@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  face-recognition-api:
+    build: ./backend
+    container_name: face-recognition-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./database:/data                 # Volumen para la base de datos
+      - ./training_images:/training_images  # Volumen para imágenes de entrenamiento
+    environment:
+      - PYTHONPATH=/app
+      - DATABASE_PATH=/data/face_database.npz
+    restart: unless-stopped
+    networks:
+      - face-recognition-net
+
+networks:
+  face-recognition-net:
+    driver: bridge
+
+volumes:
+  database-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./database
