@@ -9,9 +9,12 @@ RUN apt-get update && apt-get install -y \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-# Copiar requirements e instalar dependencias de Python
+# Copiar requirements primero para mejor caching
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+
+# Instalar dependencias de Python
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Crear directorio para la base de datos
 RUN mkdir -p /data

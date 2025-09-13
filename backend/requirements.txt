@@ -3,7 +3,7 @@ uvicorn==0.24.0
 python-multipart==0.0.6
 numpy==1.24.3
 opencv-python==4.8.1.78
-mediapipe==0.10.3  # Versión específica conocida por ser estable
+mediapipe==0.10.14  # Última versión compatible con Python 3.9
 pillow==10.0.1
 python-jose==3.3.0
 passlib==1.7.4
